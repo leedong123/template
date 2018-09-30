@@ -1,0 +1,21 @@
+#include <iostream>
+ using namespace std; 
+ int N, A[50005], que[50005]; 
+ int main() {
+  cin >> N; 
+  for (int i = 0; i < N; i++) 
+  cin >> A[i]; 
+  int head = 0, tail = 0, ans = 0; 
+  for (int i = 0; i < N; i++) 
+  { if (tail == 0 || A[i] < A[que[tail - 1]]) 
+          que[tail++] = i; 
+  else { for (int j = 0; j < tail; j++) 
+  { if (A[que[j]] <= A[i]) 
+  { int temp = i - que[j]; 
+  if (temp > ans)
+  { ans = temp; } break; 
+  } 
+  } 
+  } 
+  } 
+  printf("%d\n", ans); return 0; }
